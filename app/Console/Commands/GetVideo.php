@@ -41,6 +41,7 @@ class GetVideo extends Command
     {
         set_time_limit(0);
         $index = 1;
+        echo "\n\n<=== Starting ===>\n\n";
         for($i=1; $i<=86; $i++){
             if($i>1){
                 $html =  getList('https://aidol.asia/idol/page/'.$i.'/');
@@ -77,8 +78,8 @@ class GetVideo extends Command
                 if(!\File::exists($path_preview)) {
                     \File::makeDirectory($path_preview, $mode = 0777, true, true);
                 }
-                $filename_preview = $video['code'].'.'.pathinfo($video['image'], PATHINFO_EXTENSION);
-                \Image::make($video['image'])->save($path_preview.$filename_preview);
+                $filename_preview = $video['code'].'.'.pathinfo($video['preview'], PATHINFO_EXTENSION);
+                \Image::make($video['preview'])->save($path_preview.$filename_preview);
                 $vid->image     = '/upload/images/'.$filename_image;
                 $vid->preview   = '/upload/previews/'.$filename_preview;
                 $vid->save();
