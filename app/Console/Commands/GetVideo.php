@@ -85,7 +85,7 @@ class GetVideo extends Command
                 $vid->save();
                 echo "\t--".$index."\t".$video['code']."\n";
                 $index++;
-                sleep(20);
+                sleep(10);
             }
             echo "\n\n<=== Done page ".$i."===>\n\n";
         }
